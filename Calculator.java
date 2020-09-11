@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Calculator {
     public static void main(String[] args ) {
         boolean isRunning = true;
@@ -7,40 +8,54 @@ public class Calculator {
 
         while (isRunning) {
             System.out.println("Choose operator");
-            String operator = in.next();
+            String operator = in.next();//Choose the operator, first question
+             
+        
+             
+             double Num1 = 0;
+             double Num2 = 0;
+
+             
+             try {
+                 System.out.println("Num1:");
+                 Num1 = in.nextDouble();
+             } catch (Exception ex) {
+                 System.out.println("Something went wrong");
+                }
 
              try {
-                 System.out.println("Please, enter a number");
-                 
-             } catch (NumberFormatException ex) {
-                 
-
+                 System.out.println("Num2:");
+                 Num2 = in.nextDouble();
+             } catch (Exception ex)  {
+                 System.out.println("Something went wrong"); //Try/catch makes it not crash if u type letters
              }
-        
-             System.out.println("Num1:");
-             double num1 = in.nextDouble();
-             System.out.println("Num2:");
-             double num2 = in.nextDouble();
+
+            
 
              switch(operator) { //löser så att du kan byta mellan +-*/
                 case "+":
-                    System.out.println(addition(num1, num2));
+                    System.out.println(addition(Num1, Num2));
                     break;
                 case "-":
-                     System.out.println(subtraction(num1, num2));
+                     System.out.println(subtraction(Num1, Num2));
                     break;
                 case "*":
-                    System.out.println(multiplication(num1, num2));
+                    System.out.println(multiplication(Num1, Num2));
                     break;
                 case "/":
-                    System.out.println(division(num1, num2));}
+                    System.out.println(division(Num1, Num2));
+                    break; 
+                default:
+                    System.out.println("Something went wrong");
+                    break;
+             }
                     
         
 
             System.out.println("Enter bye to exit");
             String input = in.nextLine();
             if (input.equals("bye")) {
-                isRunning = false;
+                isRunning = false; //Cancel the loop so you can quit the program
             }
         }
         System.out.println("You have exited");
@@ -65,6 +80,6 @@ public class Calculator {
 
     public static double division(double num1, double num2) {
         double result = num1 / num2;
-        return result;
+        return result; //so it knows how yo count
     }
 }
